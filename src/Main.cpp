@@ -9,6 +9,7 @@
 #include "Util/SystemCalls.hpp"
 #include "Game.hpp"
 #include "Hooking.hpp"
+#include "Test/Audio.h"
 
 SYS_MODULE_INFO(Minecraft, 0, 1, 1);
 SYS_MODULE_START(Minecraft_Main);
@@ -16,7 +17,7 @@ SYS_MODULE_STOP(Minecraft_Stop);
 
 sys_ppu_thread_t gMinecraftPpuThread = SYS_PPU_THREAD_ID_INVALID;
 sys_ppu_thread_t gFailSafePpuThread = SYS_PPU_THREAD_ID_INVALID;
-bool gFalilSafeRunning = true;
+bool gFailSafeRunning = true;
 
 
 /***
@@ -64,6 +65,11 @@ int Minecraft_Main(int argc, char* argv[])
 
       InstallHooks();
 
+      GAudio.Start();
+      GAudio.SetVolume(1.f);
+
+      GAudio.Play(AUDIO_PATH "pornhub intro.wav");
+
       sys_ppu_thread_exit(0);
 
    }, 0, 3000, 0x8000, SYS_PPU_THREAD_CREATE_JOINABLE, "Minecraft");
@@ -71,7 +77,7 @@ int Minecraft_Main(int argc, char* argv[])
 
    sys_ppu_thread_create(&gFailSafePpuThread, [](uint64_t arg)
    {
-      while (gFalilSafeRunning)
+      while (gFailSafeRunning)
       {
          auto UpdateExitProcessOnException = []() -> void
          {
@@ -101,7 +107,8 @@ int Minecraft_Main(int argc, char* argv[])
 
 int Minecraft_Stop(int argc, char* argv[])
 {
-   gFalilSafeRunning = false;
+   gFailSafeRunning = false;
+   g_unloadModule = true;
 
    uint64_t retVal;
    sys_ppu_thread_join(gMinecraftPpuThread, &retVal);

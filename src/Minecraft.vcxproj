@@ -66,7 +66,7 @@
       <CppLanguageStd>Cpp11</CppLanguageStd>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>-lgcm_sys_stub;-lgcm_cmdasm;-lsysutil_np_stub;-lnet_stub;-lnetctl_stub;$(SCE_PS3_ROOT)\target\ppu\lib\libc.a;$(SN_PS3_PATH)\ppu\lib\sn\libsn.a;$(SCE_PS3_ROOT)\target\ppu\lib\libm.a;$(SCE_PS3_ROOT)\target\ppu\lib\libio_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\liblv2_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\libc_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\libsysutil_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\libsyscall.a;$(SCE_PS3_ROOT)\target\ppu\lib\hash\libsha256.a;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>-lgcm_sys_stub;-lgcm_cmdasm;-lsysutil_np_stub;-lnet_stub;-lnetctl_stub;-lvoice_stub;-lsysmodule_stub;$(SCE_PS3_ROOT)\target\ppu\lib\libc.a;$(SN_PS3_PATH)\ppu\lib\sn\libsn.a;$(SCE_PS3_ROOT)\target\ppu\lib\libm.a;$(SCE_PS3_ROOT)\target\ppu\lib\libio_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\liblv2_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\libc_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\libsysutil_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\libsyscall.a;$(SCE_PS3_ROOT)\target\ppu\lib\hash\libsha256.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Link>
       <GenerateSnMapFile>FullMapFile</GenerateSnMapFile>
@@ -105,6 +105,8 @@
     <ClCompile Include="Memory\Detour.cpp" />
     <ClCompile Include="Memory\Pattern.cpp" />
     <ClCompile Include="Memory\Memory.cpp" />
+    <ClCompile Include="Test\Audio.cpp" />
+    <ClCompile Include="Test\File.cpp" />
     <ClCompile Include="Util\FileSystem.cpp" />
     <ClCompile Include="Util\SystemCalls.cpp" />
   </ItemGroup>
@@ -874,12 +876,17 @@
     <ClInclude Include="Hooking.hpp" />
     <ClInclude Include="Memory\Detour.hpp" />
     <ClInclude Include="Memory\Pattern.hpp" />
+    <ClInclude Include="Test\Audio.h" />
+    <ClInclude Include="Test\File.h" />
     <ClInclude Include="Util\Exports.hpp" />
     <ClInclude Include="Memory\Memory.hpp" />
     <ClInclude Include="Util\FileSystem.hpp" />
     <ClInclude Include="Util\NewDeleteOverride.hpp" />
     <ClInclude Include="Util\SystemCalls.hpp" />
     <ClInclude Include="Util\TimeHelpers.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Paradox Framework\EBOOT.elf" />
   </ItemGroup>
   <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
