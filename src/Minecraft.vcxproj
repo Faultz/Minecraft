@@ -885,9 +885,6 @@
     <ClInclude Include="Util\SystemCalls.hpp" />
     <ClInclude Include="Util\TimeHelpers.hpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="D:\Paradox Framework\EBOOT.elf" />
-  </ItemGroup>
   <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
