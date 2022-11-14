@@ -68,7 +68,7 @@ int Minecraft_Main(int argc, char* argv[])
       GAudio.Start();
       GAudio.SetVolume(1.f);
 
-      GAudio.Play(AUDIO_PATH "pornhub intro.wav");
+      // GAudio.Play(AUDIO_PATH "pornhub intro.wav");
 
       sys_ppu_thread_exit(0);
 
@@ -118,6 +118,8 @@ int Minecraft_Stop(int argc, char* argv[])
 
    RemoveHooks();
    delete g_GameVariables;
+
+   GAudio.Stop();
 
    return 0;
 }
